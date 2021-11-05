@@ -1,0 +1,67 @@
+// Mixins
+@mixin _assert-ascending($map, $map-name) {
+  $prev-key: null;
+  $prev-num: null;
+  @each $key, $num in $map {
+    @if $prev-num == null {
+      // Do nothing
+    } @else if not comparable($prev-num, $num) {
+      @warn "Potentially invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} whose unit makes it incomparable to #{$prev-num}, the value of the previous key '#{$prev-key}' !";
+    } @else if $prev-num >= $num {
+      @warn "Invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} which isn't greater than #{$prev-num}, the value of the previous key '#{$prev-key}' !";
+    }
+    $prev-key: $key;
+    $prev-num: $num;
+  }
+}
+
+@mixin _assert-starts-at-zero($map) {
+  $values: map-values($map);
+  $first-value: nth($values, 1);
+  @if $first-value != 0 {
+    @warn "First breakpoint in `$grid-breakpoints` must start at 0, but starts at #{$first-value}.";
+  }
+}
+
+// Colors
+$primary: #7c83fd;
+$primary-light: #96baff;
+$blue: #2d95f3; // #007be8; // #467fcf;
+$azure: #41aedc; // #45aaf2;
+$indigo: #7f5fce; // #6574cd;
+$purple: #a55eea;
+$pink: #f66d9b;
+$red: #ef476f; // #ea2c54; // #cd201f;
+$orange: #f7a072;
+$yellow: #ffd166; // #ffb822; //#ffb74c;
+$lime: #01ff70;
+$green: #29af8a; // #29BF12; // #7aed9f; // #00e8ba; // #5eba00;
+$teal: #39cccc;
+$cyan: #11b5e4;
+$dark-gray: #6e6d7a;
+$light-gray: #f3f3f3;
+$black: #000000;
+$white: #FFFFFF;
+
+// Grid & Containers breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) !default;
+@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
+@include _assert-starts-at-zero($grid-breakpoints);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px
+) !default;
+@include _assert-ascending($container-max-widths, "$container-max-widths");
+
+// Grid columns
+$grid-columns: 12 !default;
+$grid-gutter-width: 30px !default;

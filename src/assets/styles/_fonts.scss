@@ -1,0 +1,21 @@
+@mixin font($font-family, $font-file) {
+  @font-face {
+    font-family: $font-family;
+    src: url($font-file+".ttf") format("truetype");
+    // font-weight: normal;
+    // font-style: normal;
+  }
+}
+
+@include font("ProductSans", "./assets/fonts/ProductSans-Regular");
+@include font("ProductSans-Italic", "./assets/fonts/ProductSans-Italic");
+@include font("ProductSans-Thin", "./assets/fonts/ProductSans-Thin");
+@include font("ProductSans-ThinItalic", "./assets/fonts/ProductSans-ThinItalic");
+@include font("ProductSans-Light", "./assets/fonts/ProductSans-Light");
+@include font("ProductSans-LightItalic", "./assets/fonts/ProductSans-LightItalic");
+@include font("ProductSans-Medium", "./assets/fonts/ProductSans-Medium");
+@include font("ProductSans-MediumItalic", "./assets/fonts/ProductSans-MediumItalic");
+@include font("ProductSans-Bold", "./assets/fonts/ProductSans-Bold");
+@include font("ProductSans-BoldItalic", "./assets/fonts/ProductSans-BoldItalic");
+@include font("ProductSans-Black", "./assets/fonts/ProductSans-Black");
+@include font("ProductSans-BlackItalic", "./assets/fonts/ProductSans-BlackItalic");

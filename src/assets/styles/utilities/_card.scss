@@ -1,0 +1,13 @@
+.card-container {
+  background: $light-gray;
+  border-radius: 5px;
+}
+.card-header {
+  padding: 1rem;
+  &.border-bottom {
+    box-shadow: 0 2px 2px -2px rgb(0 0 0 / 20%);
+  }
+}
+.card-body {
+    padding: 1rem;
+}

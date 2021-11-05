@@ -1,0 +1,32 @@
+html {
+  font-size: 16px;
+  height: 100%;
+  direction: ltr;
+}
+
+body {
+  direction: ltr;
+  height: 100%;
+  position: relative;
+  margin: 0;
+  background-color: $white;
+  font-family: "ProductSans-Medium" !important;
+  @extend .custom-scrollbar;
+
+  * {
+    @extend .custom-scrollbar;
+  }
+}
+
+a {
+  &:hover {
+    color: $black;
+  }
+  color: $dark-gray;
+  transition: color 0.2s ease-in-out;
+  text-decoration: none;
+
+  & span {
+	font-family: 'ProductSans-Medium' !important;
+  }
+}
