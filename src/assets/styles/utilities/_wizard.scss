@@ -1,3 +1,8 @@
+.wizzard-container {
+  display: block;
+  margin-bottom: 0;
+}
+
 .wizzard-circle {
   display: flex;
   align-items: center;
@@ -16,10 +21,33 @@
   width: 2px;
   background: $light-gray;
   margin: {
-    top: 0.5rem;
+    left: 0;
+    right: 0;
     bottom: 0.5rem;
+    top: 0.5rem;
   }
   &.active {
     background: $primary;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .wizzard-container {
+    display: flex;
+    margin-bottom: 1rem;
+  }
+  .wizzard-divider {
+    height: 2px;
+    width: 80px;
+    background: $light-gray;
+    margin: {
+      left: 0.5rem;
+      right: 0.5rem;
+      bottom: 0;
+      top: 0;
+    }
+    &.active {
+      background: $primary;
+    }
   }
 }

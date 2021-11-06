@@ -22,9 +22,6 @@ const methods = {
       state.lastNumberBuy++;
     }
     state.items.push({ ...payload, numberBuy: state.lastNumberBuy });
-    setInterval(() => {
-      state.popped = false;
-    }, 1200);
 
     // Convert to Cart Payload
     let emptyArray = [];
@@ -70,7 +67,10 @@ const methods = {
 
     //Final Cart Data
     state.cart = newData;
-    console.log(state.lastNumberBuy, state.cart)
+
+    setInterval(() => {
+      state.popped = false;
+    }, 1200);
   }
 };
 
