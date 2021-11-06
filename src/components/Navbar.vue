@@ -28,9 +28,19 @@
         <ul class="navbar-wrapper right" style="margin-left: auto;">
           <li class="navbar-item d-flex center-v" style="position: relative;">
             <div class="d-flex">
-              <button class="button d-flex center-v bg-transparent">
-                <Icon name="cart-icon" style="height: 18px;"/>
-              </button>
+              <router-link to="/cart">
+                <button
+                  class="button d-flex center-v bg-transparent"
+                  style="position: relative;"
+                  to="/cart"
+                >
+                  <Icon name="cart-icon" style="height: 18px;"/>
+                  <div
+                    v-bind:class="(store.state.popped)?'badges popped':'badges'"
+                    v-if="store.state.items.length !== 0"
+                  >{{store.state.items.length || null}}</div>
+                </button>
+              </router-link>
             </div>
           </li>
         </ul>
@@ -41,9 +51,15 @@
 
 <script>
 import Icon from "@/components/Icon";
-
+import { inject } from "vue";
 export default {
   name: "Navbar",
+  setup() {
+    const store = inject("store");
+    return {
+      store
+    };
+  },
   components: {
     Icon
   },

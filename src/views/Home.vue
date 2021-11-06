@@ -61,9 +61,17 @@
                 >
               </div>
               <div class="card-body" style="padding-top: 0.5rem;">
-                <span style="font-weight: bold;">{{meal.strMeal}}</span>
+                <span
+                  style="font-weight: bold;"
+                >{{meal.strMeal.length > 27 ? `${meal.strMeal.slice(0, 27)}...` : meal.strMeal}}</span>
                 <div style="margin-top: 1rem;">
-                  <button class="button bg-primary" style="width: 100%;" type="button">
+                  <button
+                    class="button bg-primary"
+                    style="width: 100%;"
+                    type="button"
+                    :disabled="store.state.popped"
+                    @click="(store.state.popped)?()=>{}:store.methods.handleAddToCart(meal)"
+                  >
                     <span class="text-white" style="font-family: 'ProductSans-Medium';">Add to Cart</span>
                   </button>
                 </div>
@@ -82,8 +90,15 @@
 <script>
 import axios from "axios";
 import Loading from "@/components/Loading";
-
+import { inject } from "vue";
 export default {
+  setup() {
+    const store = inject("store");
+
+    return {
+      store
+    };
+  },
   data() {
     return {
       radioButtonModel: [],
@@ -131,7 +146,19 @@ export default {
         .get("https://www.themealdb.com/api/json/v1/1/filter.php?a=Italian")
         .then(response => {
           this.meals = response.data.meals;
-          console.log(response.data.meals);
+          this.loading.meals = false;
+        })
+        .catch(err => {
+          // handle error
+          console.log(err);
+        });
+    },
+    getMealByCategory: function(category) {
+      this.loading.meals = true;
+      axios
+        .get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
+        .then(response => {
+          this.meals = response.data.meals;
           this.loading.meals = false;
         })
         .catch(err => {
@@ -145,7 +172,6 @@ export default {
         .get("https://www.themealdb.com/api/json/v1/1/list.php?c=list")
         .then(response => {
           this.category = response.data.meals;
-          console.log("asu", response.data.meals);
           this.loading.category = false;
         })
         .catch(err => {
@@ -157,8 +183,15 @@ export default {
       this.active = index;
       this.handleChangeImage(index);
     },
+    handleChangeImage(index) {
+      if (index % 2 === 0) {
+        this.imagePath = require("@/assets/images/burger-banner.jpg");
+      } else {
+        this.imagePath = require("@/assets/images/indian-banner.jpg");
+      }
+    },
     handleChangeRadio(value) {
-      console.log(value);
+      this.getMealByCategory(value);
     }
   }
 };

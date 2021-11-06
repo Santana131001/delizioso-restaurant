@@ -1,0 +1,25 @@
+.wizzard-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background: $light-gray;
+  &.active {
+    background: $primary;
+    color: $white;
+  }
+}
+.wizzard-divider {
+  height: 80px;
+  width: 2px;
+  background: $light-gray;
+  margin: {
+    top: 0.5rem;
+    bottom: 0.5rem;
+  }
+  &.active {
+    background: $primary;
+  }
+}
