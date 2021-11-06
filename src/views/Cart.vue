@@ -55,13 +55,13 @@
                   </div>
                 </div>
                 <div class="d-flex center-v" style="margin-left: auto;">
-                  <button class="button bg-primary">
+                  <button class="button bg-primary" @click="handleDeleteItemsInCart(item.name, store)">
                     <span class="text-white">-</span>
                   </button>
                   <div style="margin: 0 1rem;">
                     <span>{{item.total}}</span>
                   </div>
-                  <button class="button bg-primary">
+                  <button class="button bg-primary" @click="handleAddItemsToCart(item.name, store)">
                     <span class="text-white">+</span>
                   </button>
                 </div>
@@ -94,6 +94,20 @@
 import { inject } from "vue";
 export default {
   name: "Cart",
+  methods: {
+    handleAddItemsToCart(item, store) {
+      const itemDetail = store.state.items.filter(o => o.strMeal === item);
+      console.log(item, store, itemDetail[0]);
+      store.methods.handleAddToCart({
+        strMeal: itemDetail[0].strMeal,
+        idMeal: itemDetail[0].idMeal,
+        strMealThumb: itemDetail[0].strMealThumb
+      });
+    },
+    handleDeleteItemsInCart(item, store){
+        
+    }
+  },
   setup() {
     const store = inject("store");
 
