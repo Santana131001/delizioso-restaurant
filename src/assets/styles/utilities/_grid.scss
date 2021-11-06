@@ -95,6 +95,9 @@ $enable-grid-classes: true;
   .container {
     @include make-container();
     @include make-container-max-widths();
+    &.layout {
+      margin-top: 6.5rem;
+    }
   }
 }
 
