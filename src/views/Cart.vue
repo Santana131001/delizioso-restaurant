@@ -15,30 +15,30 @@
     </div>
     <div v-else class="row no-gutter">
       <div class="col-md-2">
-        <div class="wizzard-container">
+        <div class="wizard-container center-v">
           <div class="d-flex center-v">
             <div
-              v-bind:class="(currentRouteName === 'Cart')?'wizzard-circle active':'wizzard-circle'"
+              v-bind:class="(currentRouteName === 'Cart')?'wizard-circle active':'wizard-circle'"
             >
               <Icon name="cart-icon" style="height: 15px;"/>
             </div>
           </div>
           <div class="d-flex center-v">
             <div
-              v-bind:class="(currentRouteName === 'Cart')?'wizzard-divider active':'wizzard-divider'"
+              v-bind:class="(currentRouteName === 'Cart')?'wizard-divider active':'wizard-divider'"
             ></div>
           </div>
           <div class="d-flex center-v">
-            <div class="wizzard-circle">
+            <div class="wizard-circle">
               <Icon name="wallet-icon" style="height: 15px;"/>
             </div>
           </div>
           <div class="d-flex center-v">
-            <div class="wizzard-divider"></div>
+            <div class="wizard-divider"></div>
           </div>
           <div class="d-flex center-v">
-            <div class="wizzard-circle">
-              <Icon name="wallet-icon" style="height: 15px;"/>
+            <div class="wizard-circle">
+              <Icon name="like-icon" style="height: 15px;"/>
             </div>
           </div>
         </div>
@@ -64,7 +64,7 @@
                         <span style="font-size: 20px; font-weight: bold;">{{item.name}}</span>
                       </div>
                       <div class="d-flex center-v">
-                        <span style="font-family: 'ProductSans'">Description: -</span>
+                        <span style="font-family: 'ProductSans'">Description</span>
                       </div>
                     </div>
                   </div>
@@ -83,7 +83,7 @@
                     </button>
                   </div>
                   <div class="col-md-1 d-flex center-v">
-                    <span style="font-family: 'ProductSans'">Price: -</span>
+                    <span style="font-family: 'ProductSans'">Price</span>
                   </div>
                 </div>
               </div>
@@ -98,9 +98,11 @@
           class="d-flex"
           style="justify-content: flex-end; font-family: 'ProductSans'; margin: 1rem 0;"
         >
-          <button class="button bg-primary">
-            <span class="text-white">Checkout Now</span>
-          </button>
+          <router-link to="/checkout">
+            <button class="button bg-primary">
+              <span class="text-white">Checkout Now</span>
+            </button>
+          </router-link>
         </div>
       </div>
     </div>

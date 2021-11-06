@@ -1,9 +1,11 @@
-.wizzard-container {
+.wizard-container {
   display: block;
   margin-bottom: 0;
+  position: sticky;
+  top: 90px;
 }
 
-.wizzard-circle {
+.wizard-circle {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,7 +18,7 @@
     color: $white;
   }
 }
-.wizzard-divider {
+.wizard-divider {
   height: 80px;
   width: 2px;
   background: $light-gray;
@@ -32,11 +34,11 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .wizzard-container {
+  .wizard-container {
     display: flex;
     margin-bottom: 1rem;
   }
-  .wizzard-divider {
+  .wizard-divider {
     height: 2px;
     width: 80px;
     background: $light-gray;

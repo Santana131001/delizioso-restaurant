@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import Gallery from "../views/Gallery.vue";
 import Cart from "../views/Cart.vue";
+import Checkout from "../views/Checkout.vue";
+import Thanks from "../views/Thanks.vue";
 
 const routes = [
   {
@@ -18,13 +20,17 @@ const routes = [
     path: "/cart",
     name: "Cart",
     component: Cart
+  },
+  {
+    path: "/checkout",
+    name: "Checkout",
+    component: Checkout
+  },
+  {
+    path: "/thanks",
+    name: "Thanks",
+    component: Thanks
   }
-  // {
-  //   path: "/gallery",
-  //   name: "Gallery",
-  //   component: () =>
-  //     import(/* webpackChunkName: "gallery" */ "../views/Gallery.vue")
-  // }
 ];
 
 const router = createRouter({

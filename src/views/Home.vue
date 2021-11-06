@@ -72,6 +72,7 @@
                     :disabled="store.state.popped"
                     @click="(store.state.popped)?()=>{}:store.methods.handleAddToCart(meal)"
                   >
+                    <Icon name="add-icon" style="height: 13px; padding-right: 0.5rem;"/>
                     <span class="text-white" style="font-family: 'ProductSans-Medium';">Add to Cart</span>
                   </button>
                 </div>
@@ -90,7 +91,9 @@
 <script>
 import axios from "axios";
 import Loading from "@/components/Loading";
+import Icon from "@/components/Icon";
 import { inject } from "vue";
+
 export default {
   setup() {
     const store = inject("store");
@@ -114,7 +117,8 @@ export default {
     };
   },
   components: {
-    Loading
+    Loading,
+    Icon
   },
   created: function() {
     this.getMeals();
